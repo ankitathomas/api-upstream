@@ -82,10 +82,11 @@ TEST_PKGS:=$(shell go list ./...)
 test-unit: ## Run the unit tests
 	$(Q)go test -count=1 -short ${TEST_PKGS}
 
-# Utilities.
+# utilities.
 .PHONY: controller-gen
 
-controller-gen: vendor ## Find or download controller-gen 
+# Find or download controller-gen
+controller-gen: vendor 
 CONTROLLER_GEN=$(Q)go run -mod=vendor ./vendor/sigs.k8s.io/controller-tools/cmd/controller-gen
 
 # done
